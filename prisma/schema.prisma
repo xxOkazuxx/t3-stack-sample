@@ -26,6 +26,14 @@ model Post {
     @@index([name])
 }
 
+model SamplePost {
+    id        Int      @id @default(autoincrement())
+    text      String
+    content   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
 // Necessary for Next auth
 model Account {
     id                       String  @id @default(cuid())
