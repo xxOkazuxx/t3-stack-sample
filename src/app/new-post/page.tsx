@@ -19,11 +19,11 @@ export default async function NewPost() {
                 ))}
             </ul>
             <form>
-                <button type="submit" className="rounded-lg bg-blue-500 px-10 py-3 mt-3 transition hover:bg-blue-600">
+                <button type="submit" className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20">
                     Create Post
                 </button>
             </form>
-            <Link href="/" className="border border-white/40 bg-white/50 rounded-lg px-6 py-2 mt-3 text-black">
+            <Link href="/" className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20">
                 戻る
             </Link>
         </div>
