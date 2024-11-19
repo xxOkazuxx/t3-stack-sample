@@ -1,6 +1,11 @@
 import { api } from "~/trpc/server";
 import Link from "next/link";
+import { createPost } from "./actions";
 
+/**
+ * 新規投稿ページコンポーネント
+ * 投稿の一覧表示と新規作成機能を提供します
+ */
 export default async function NewPost() {
     const posts = await api.samplePost.getAll();
     if (!posts) {
@@ -18,8 +23,24 @@ export default async function NewPost() {
                     </div>
                 ))}
             </ul>
-            <form>
-                <button type="submit" className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20">
+            <form action={createPost} className="flex flex-col gap-4 w-full max-w-xl">
+                <input
+                    type="text"
+                    name="text"
+                    placeholder="タイトル"
+                    className="rounded-lg bg-white/10 px-4 py-2"
+                    required
+                />
+                <textarea
+                    name="content"
+                    placeholder="内容"
+                    className="rounded-lg bg-white/10 px-4 py-2 min-h-[100px]"
+                    required
+                />
+                <button
+                    type="submit"
+                    className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+                >
                     Create Post
                 </button>
             </form>
