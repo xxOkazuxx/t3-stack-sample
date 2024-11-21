@@ -33,4 +33,22 @@ export async function createPost(formData: FormData) {
         console.error("投稿作成エラー:", error);
         throw new Error("投稿の作成に失敗しました");
     }
-} 
+}
+
+export async function updatePost(formData: FormData) {
+
+}
+
+export async function deletePost(formData: FormData) {
+    const id = formData.get("id") as string;
+    if (!id) {
+        throw new Error("IDが必要です");
+    }
+    try {
+        await api.samplePost.deletePost({ id });
+        revalidatePath("/new-post");
+    } catch (error) {
+        console.error("投稿削除エラー:", error);
+        throw new Error("投稿の削除に失敗しました");
+    }
+}
